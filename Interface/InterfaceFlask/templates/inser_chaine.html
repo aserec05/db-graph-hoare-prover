@@ -1,0 +1,21 @@
+<script>
+    var chaine = document.getElementById('chaine'); 
+    //~ var v0 = '{{elt[1]}}'; // attention !!!! ajout de ' et '
+    document.getElementById( {{  elt[0]  }} ).addEventListener(
+        'click', 
+        function() {
+            var start = chaine.selectionStart;
+            var end = chaine.selectionEnd;
+            
+            var before = chaine.value.substring(0, start);
+            var after = chaine.value.substring(end);
+
+            chaine.value = before + '{{ elt[1] }}' + after;
+
+            var newCursorPos = start + ' {{ elt[1] }}'.length;
+            chaine.selectionStart = newCursorPos;
+            chaine.selectionEnd = newCursorPos;
+
+            chaine.focus();
+            });
+</script>

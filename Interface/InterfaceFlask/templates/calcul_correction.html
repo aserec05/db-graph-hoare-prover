@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Calcul corection</title>
+		<link href="{{ url_for('static', filename='commun.css') }}" rel="stylesheet" type="text/css" />
+	</head>
+
+
+	<body>
+		
+	
+	<!--  ********************************************************** -->
+		<div class="menu" >
+
+		<h1>Prouveur</h1>
+		 
+			<ul>
+				<li><a href = "/central" >Retour</a> vers les données</li>
+				<br>&nbsp;
+				
+				<li>Enregistrer la réponse <a href = "/enregistrer_reponse_fichier" >dans un fichier</a></li>
+				<br>&nbsp;
+				
+				<li><a href = "/" >Quitter</a> </li>
+			</ul>
+		</div>
+	
+	
+	<!--  ********************************************************** -->
+		<div class="corps_page" >	
+		
+		
+		<h1>Calcul correction</h1>
+			
+			<div class = "cadre">
+				<h3>Réponse</h3>
+				{% for elt in reponse %}
+				<br>{{ elt }}
+				{% endfor %} 
+			</div>
+			{% if not sucess %}
+				<div class="cadre">
+					<h3>Contre-Exemple</h3>
+					<br>
+					{% for elt in assignations %}
+						<br>{{ elt }}
+					{% endfor %} 
+
+					<br>
+					<br>
+
+					{% for name, list_att in predicats_faciles.items() %}
+						{% include 'predicat.html' %}
+					{% endfor %}
+					
+					
+				</div>
+			{% endif %}
+		 
+			<div class = "cadre">
+				<h3>Formule de correction à prouver par Z3</h3>
+				{% for elt in formuleCorrectionHtml %}
+				<br>{% for elt in range(elt[0]) %}&nbsp;{% endfor %}{{ elt[1] }}
+				{% endfor %}  
+			</div>
+			
+		</div>
+		
+	</body>
+  
+</html>

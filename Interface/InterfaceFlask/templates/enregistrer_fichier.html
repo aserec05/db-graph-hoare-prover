@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Enregistrer fichier</title>
+		
+		<link href="{{ url_for('static', filename='commun.css') }}" rel="stylesheet" type="text/css" />
+	</head>
+
+
+	<body>
+		
+		
+	<!--  ********************************************************** -->
+		<div class="menu" >
+			<h1>Prouveur</h1>
+			 
+			<ul>
+				 
+				
+				<li><a href = "/central" >Annuler</a></li>
+				<br>&nbsp;
+				
+				<li>Page <a href = "/" >Accueil</a>  </li>
+			</ul>
+		</div>
+	
+	
+	<!--  ********************************************************** -->
+		<div class="corps_page" >
+	<body>
+			<h1>Enregistrer dans un fichier</h1>
+
+			Ecrire le nom du fichier
+			
+			<form action="/enregistrer_fichier_suite" method="post">
+			
+			<input  type = "text"
+					name = "nomDuFichier"  
+					size = 30  />
+			
+			<br><input type="submit" value = "Enregistrer" />
+			
+			</form>
+			 
+		 
+    
+	</body>
+  
+</html>
+
+
+
+
+
+

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Supprimmer une regle</title>
+		
+		<link href="{{ url_for('static', filename='commun.css') }}" rel="stylesheet" type="text/css" />
+	</head>
+
+
+
+
+	<body>
+		
+		
+		<form action="/supprime_regle_suite/{{   nomRegle   }}" method="post">
+			
+			<!--  ********************************************************** -->
+			<div class="menu" >
+				<h1>Prouveur</h1>
+				 
+				<ul>
+					<li><a href = "/central" >Annuler</a></li>
+					<br>&nbsp;
+					
+					<li><input type="submit" value="Valider la suppression" />
+				</ul>
+			</div>
+	
+	
+			<!--  ********************************************************** -->
+			<div class="corps_page" >
+				
+				<h1> Supprimer la regle : {{ nomRegle }} </h1>
+				 
+				{% set regle = datasNoyau.getLesRegles().getRegle(nomRegle) %}
+				Regle [{{   nomRegle   }}]
+		
+				<ul>
+				<!-- les noeuds -->
+				{% set nombre = regle.getNombreNoeuds() %}
+				{% if nombre %}
+					<li>Les noeuds : {{ nombre }}
+					<ul>
+					{% for noeud in regle.iterateurNoeuds()  %}
+						<li>  {{   noeud   }} 
+					{% endfor %}
+					</ul>
+				{% else %}
+					<li>Aucun noeud
+				 {% endif %}
+				
+				<!-- les arcs -->
+				{% set nombre = regle.getNombreArcs() %}
+				{% if nombre %}
+					<li>Les arcs: {{ nombre }}
+					<ul>
+					{% for arc in  regle.iterateurArcs()  %}
+						<li>  {{   arc   }} 
+					{% endfor %}
+					</ul>
+				{% else %}
+					<li>Aucun arc
+				 {% endif %}
+				
+				<!-- les actions -->
+				{% set nombre = regle.getNombreActions() %}
+				{% if nombre %}
+					<li>Les actions: {{ nombre }}
+					<ul>
+					{% for action in  regle.iterateurActions()  %}
+						<li>  {{   action   }} 
+					{% endfor %}
+					</ul>
+				{% else %}
+					<li>Aucune action
+				{% endif %}
+				<br>&nbsp;
+				</ul>
+
+		<!-- ******************************************************* -->
+		
+		</form>
+	</body>
+  
+</html>

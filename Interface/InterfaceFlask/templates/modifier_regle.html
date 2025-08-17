@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Saisie d'une regle</title>
+		
+		<link href="{{ url_for('static', filename='commun.css') }}" rel="stylesheet" type="text/css" />
+	</head>
+
+
+
+
+	<body>
+		
+		<form action="/traitement_saisie_regle"   method="post">
+			
+			<!--  ********************************************************** -->
+			<div class="menu" >
+				<h1>Prouveur</h1>
+				 
+				<ul>
+					<li><a href = "/central" >Annuler</a></li>
+					<br>&nbsp;
+					
+					<li><input type="submit" value="Envoyer" />
+				</ul>
+			</div>
+	
+	
+			<!--  ********************************************************** -->
+			<div class="corps_page" >
+				
+				<h1>Saisie d'une règle</h1>
+		 
+				<!--  ***********************************************  -->
+				<h2>Nom de la règle</h2>
+				<div class = "cadre">
+						<input  type="text"    
+								id = "chaine"  
+								name= "nomRegle"
+								value = "{{ nom_regle }}"   />
+				</div>
+				
+				<!--  ***********************************************  -->
+				<h2>Les noeuds</h2>
+				<div class = "cadre">
+					A saisir au format : nomDuNoeud, concept1, concept2, ...
+					<br>Exemple : p, ville
+					<br><textarea cols=40  rows = 5 name = "noeuds">{{ noeuds_string }}</textarea>  
+                    
+                </div>
+				
+				<!--  ***********************************************  -->
+				<h2>Les arcs</h2>
+				<div class = "cadre">
+					A saisir au format : nomDeLarc, noeud source, noeud destination, role (un seul)
+					<br>Exemple : e, q, p, habite
+					<br><textarea cols=40  rows = 5 name = "arcs">{{ arcs_string  }}</textarea>  
+				</div>
+			
+				<!--  ***********************************************  -->
+				<h2>Les actions</h2>
+				<div class = "cadre">
+					
+					A saisir au format : nomAction, ...
+					<ul>
+					
+					
+					</ul>
+						<li>add_C, nomDuNoeud, Concept</li>
+						<li>del_C, nomDuNoeud, Concept</li>
+						<li>add_E, nomDuNoeudSource, nomDuNoeudDestination, Role</li>
+						<li>del_E, nomDuNoeudSource, nomDuNoeudDestination, Role</li>
+						<li>redirection, nomDuNoeud1, nomDuNoeud2 (les arcs à destination du noeud 1 sont redirigés vers le noeud2)</li>
+						<li>merge, nomDuNoeud1, nomDuNoeud2 (les arcs entrants et sortants du noeud2 sont redirigés vers le noeud 1)DuNoeud, concept1, concept2, ...</li>
+					<br>Exemple : add_E, q, p, habite
+					<br><textarea cols=40  rows = 5 name = "actions">{{ actions_string  }}</textarea>  
+				</div>
+					
+			
+			 
+			</form>
+		 
+    
+  </body>
+  
+</html>

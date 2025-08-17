@@ -1,0 +1,755 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> racine
+Rule 1     racine -> formule
+Rule 2     racine -> empty
+Rule 3     formule -> EXISTENTIEL VARIABLE formule
+Rule 4     formule -> UNIVERSEL VARIABLE formule
+Rule 5     formule -> formule DISJONCTION formule
+Rule 6     formule -> formule CONJONCTION formule
+Rule 7     formule -> formule IMPLICATION formule
+Rule 8     formule -> formule EQUIVALENCE formule
+Rule 9     formule -> NEGATION formule
+Rule 10    formule -> LEFTPAR formule RIGHTPAR
+Rule 11    formule -> formuleAtomique
+Rule 12    formuleAtomique -> TRUE
+Rule 13    formuleAtomique -> FALSE
+Rule 14    formuleAtomique -> PREDICAT_1 LEFTPAR terme RIGHTPAR
+Rule 15    formuleAtomique -> PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR
+Rule 16    formuleAtomique -> terme EGAL terme
+Rule 17    terme -> VARIABLE
+Rule 18    empty -> <empty>
+
+Terminals, with rules where they appear
+
+CONJONCTION          : 6
+DISJONCTION          : 5
+EGAL                 : 16
+EQUIVALENCE          : 8
+EXISTENTIEL          : 3
+FALSE                : 13
+IMPLICATION          : 7
+LEFTPAR              : 10 14 15
+NEGATION             : 9
+PREDICAT_1           : 14
+PREDICAT_2           : 15
+RIGHTPAR             : 10 14 15
+TRUE                 : 12
+UNIVERSEL            : 4
+VARIABLE             : 3 4 17
+VIRGULE              : 15
+error                : 
+
+Nonterminals, with rules where they appear
+
+empty                : 2
+formule              : 1 3 4 5 5 6 6 7 7 8 8 9 10
+formuleAtomique      : 11
+racine               : 0
+terme                : 14 15 15 16 16
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . racine
+    (1) racine -> . formule
+    (2) racine -> . empty
+    (3) formule -> . EXISTENTIEL VARIABLE formule
+    (4) formule -> . UNIVERSEL VARIABLE formule
+    (5) formule -> . formule DISJONCTION formule
+    (6) formule -> . formule CONJONCTION formule
+    (7) formule -> . formule IMPLICATION formule
+    (8) formule -> . formule EQUIVALENCE formule
+    (9) formule -> . NEGATION formule
+    (10) formule -> . LEFTPAR formule RIGHTPAR
+    (11) formule -> . formuleAtomique
+    (18) empty -> .
+    (12) formuleAtomique -> . TRUE
+    (13) formuleAtomique -> . FALSE
+    (14) formuleAtomique -> . PREDICAT_1 LEFTPAR terme RIGHTPAR
+    (15) formuleAtomique -> . PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR
+    (16) formuleAtomique -> . terme EGAL terme
+    (17) terme -> . VARIABLE
+
+    EXISTENTIEL     shift and go to state 2
+    UNIVERSEL       shift and go to state 10
+    NEGATION        shift and go to state 12
+    LEFTPAR         shift and go to state 5
+    $end            reduce using rule 18 (empty -> .)
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 4
+    PREDICAT_1      shift and go to state 6
+    PREDICAT_2      shift and go to state 11
+    VARIABLE        shift and go to state 3
+
+    racine                         shift and go to state 7
+    empty                          shift and go to state 1
+    terme                          shift and go to state 13
+    formuleAtomique                shift and go to state 8
+    formule                        shift and go to state 14
+
+state 1
+
+    (2) racine -> empty .
+
+    $end            reduce using rule 2 (racine -> empty .)
+
+
+state 2
+
+    (3) formule -> EXISTENTIEL . VARIABLE formule
+
+    VARIABLE        shift and go to state 15
+
+
+state 3
+
+    (17) terme -> VARIABLE .
+
+    EGAL            reduce using rule 17 (terme -> VARIABLE .)
+    VIRGULE         reduce using rule 17 (terme -> VARIABLE .)
+    RIGHTPAR        reduce using rule 17 (terme -> VARIABLE .)
+    DISJONCTION     reduce using rule 17 (terme -> VARIABLE .)
+    CONJONCTION     reduce using rule 17 (terme -> VARIABLE .)
+    IMPLICATION     reduce using rule 17 (terme -> VARIABLE .)
+    EQUIVALENCE     reduce using rule 17 (terme -> VARIABLE .)
+    $end            reduce using rule 17 (terme -> VARIABLE .)
+
+
+state 4
+
+    (13) formuleAtomique -> FALSE .
+
+    DISJONCTION     reduce using rule 13 (formuleAtomique -> FALSE .)
+    CONJONCTION     reduce using rule 13 (formuleAtomique -> FALSE .)
+    IMPLICATION     reduce using rule 13 (formuleAtomique -> FALSE .)
+    EQUIVALENCE     reduce using rule 13 (formuleAtomique -> FALSE .)
+    $end            reduce using rule 13 (formuleAtomique -> FALSE .)
+    RIGHTPAR        reduce using rule 13 (formuleAtomique -> FALSE .)
+
+
+state 5
+
+    (10) formule -> LEFTPAR . formule RIGHTPAR
+    (3) formule -> . EXISTENTIEL VARIABLE formule
+    (4) formule -> . UNIVERSEL VARIABLE formule
+    (5) formule -> . formule DISJONCTION formule
+    (6) formule -> . formule CONJONCTION formule
+    (7) formule -> . formule IMPLICATION formule
+    (8) formule -> . formule EQUIVALENCE formule
+    (9) formule -> . NEGATION formule
+    (10) formule -> . LEFTPAR formule RIGHTPAR
+    (11) formule -> . formuleAtomique
+    (12) formuleAtomique -> . TRUE
+    (13) formuleAtomique -> . FALSE
+    (14) formuleAtomique -> . PREDICAT_1 LEFTPAR terme RIGHTPAR
+    (15) formuleAtomique -> . PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR
+    (16) formuleAtomique -> . terme EGAL terme
+    (17) terme -> . VARIABLE
+
+    EXISTENTIEL     shift and go to state 2
+    UNIVERSEL       shift and go to state 10
+    NEGATION        shift and go to state 12
+    LEFTPAR         shift and go to state 5
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 4
+    PREDICAT_1      shift and go to state 6
+    PREDICAT_2      shift and go to state 11
+    VARIABLE        shift and go to state 3
+
+    terme                          shift and go to state 13
+    formuleAtomique                shift and go to state 8
+    formule                        shift and go to state 16
+
+state 6
+
+    (14) formuleAtomique -> PREDICAT_1 . LEFTPAR terme RIGHTPAR
+
+    LEFTPAR         shift and go to state 17
+
+
+state 7
+
+    (0) S' -> racine .
+
+
+
+state 8
+
+    (11) formule -> formuleAtomique .
+
+    DISJONCTION     reduce using rule 11 (formule -> formuleAtomique .)
+    CONJONCTION     reduce using rule 11 (formule -> formuleAtomique .)
+    IMPLICATION     reduce using rule 11 (formule -> formuleAtomique .)
+    EQUIVALENCE     reduce using rule 11 (formule -> formuleAtomique .)
+    $end            reduce using rule 11 (formule -> formuleAtomique .)
+    RIGHTPAR        reduce using rule 11 (formule -> formuleAtomique .)
+
+
+state 9
+
+    (12) formuleAtomique -> TRUE .
+
+    DISJONCTION     reduce using rule 12 (formuleAtomique -> TRUE .)
+    CONJONCTION     reduce using rule 12 (formuleAtomique -> TRUE .)
+    IMPLICATION     reduce using rule 12 (formuleAtomique -> TRUE .)
+    EQUIVALENCE     reduce using rule 12 (formuleAtomique -> TRUE .)
+    $end            reduce using rule 12 (formuleAtomique -> TRUE .)
+    RIGHTPAR        reduce using rule 12 (formuleAtomique -> TRUE .)
+
+
+state 10
+
+    (4) formule -> UNIVERSEL . VARIABLE formule
+
+    VARIABLE        shift and go to state 18
+
+
+state 11
+
+    (15) formuleAtomique -> PREDICAT_2 . LEFTPAR terme VIRGULE terme RIGHTPAR
+
+    LEFTPAR         shift and go to state 19
+
+
+state 12
+
+    (9) formule -> NEGATION . formule
+    (3) formule -> . EXISTENTIEL VARIABLE formule
+    (4) formule -> . UNIVERSEL VARIABLE formule
+    (5) formule -> . formule DISJONCTION formule
+    (6) formule -> . formule CONJONCTION formule
+    (7) formule -> . formule IMPLICATION formule
+    (8) formule -> . formule EQUIVALENCE formule
+    (9) formule -> . NEGATION formule
+    (10) formule -> . LEFTPAR formule RIGHTPAR
+    (11) formule -> . formuleAtomique
+    (12) formuleAtomique -> . TRUE
+    (13) formuleAtomique -> . FALSE
+    (14) formuleAtomique -> . PREDICAT_1 LEFTPAR terme RIGHTPAR
+    (15) formuleAtomique -> . PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR
+    (16) formuleAtomique -> . terme EGAL terme
+    (17) terme -> . VARIABLE
+
+    EXISTENTIEL     shift and go to state 2
+    UNIVERSEL       shift and go to state 10
+    NEGATION        shift and go to state 12
+    LEFTPAR         shift and go to state 5
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 4
+    PREDICAT_1      shift and go to state 6
+    PREDICAT_2      shift and go to state 11
+    VARIABLE        shift and go to state 3
+
+    terme                          shift and go to state 13
+    formuleAtomique                shift and go to state 8
+    formule                        shift and go to state 20
+
+state 13
+
+    (16) formuleAtomique -> terme . EGAL terme
+
+    EGAL            shift and go to state 21
+
+
+state 14
+
+    (1) racine -> formule .
+    (5) formule -> formule . DISJONCTION formule
+    (6) formule -> formule . CONJONCTION formule
+    (7) formule -> formule . IMPLICATION formule
+    (8) formule -> formule . EQUIVALENCE formule
+
+    $end            reduce using rule 1 (racine -> formule .)
+    DISJONCTION     shift and go to state 22
+    CONJONCTION     shift and go to state 25
+    IMPLICATION     shift and go to state 24
+    EQUIVALENCE     shift and go to state 23
+
+
+state 15
+
+    (3) formule -> EXISTENTIEL VARIABLE . formule
+    (3) formule -> . EXISTENTIEL VARIABLE formule
+    (4) formule -> . UNIVERSEL VARIABLE formule
+    (5) formule -> . formule DISJONCTION formule
+    (6) formule -> . formule CONJONCTION formule
+    (7) formule -> . formule IMPLICATION formule
+    (8) formule -> . formule EQUIVALENCE formule
+    (9) formule -> . NEGATION formule
+    (10) formule -> . LEFTPAR formule RIGHTPAR
+    (11) formule -> . formuleAtomique
+    (12) formuleAtomique -> . TRUE
+    (13) formuleAtomique -> . FALSE
+    (14) formuleAtomique -> . PREDICAT_1 LEFTPAR terme RIGHTPAR
+    (15) formuleAtomique -> . PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR
+    (16) formuleAtomique -> . terme EGAL terme
+    (17) terme -> . VARIABLE
+
+    EXISTENTIEL     shift and go to state 2
+    UNIVERSEL       shift and go to state 10
+    NEGATION        shift and go to state 12
+    LEFTPAR         shift and go to state 5
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 4
+    PREDICAT_1      shift and go to state 6
+    PREDICAT_2      shift and go to state 11
+    VARIABLE        shift and go to state 3
+
+    terme                          shift and go to state 13
+    formuleAtomique                shift and go to state 8
+    formule                        shift and go to state 26
+
+state 16
+
+    (10) formule -> LEFTPAR formule . RIGHTPAR
+    (5) formule -> formule . DISJONCTION formule
+    (6) formule -> formule . CONJONCTION formule
+    (7) formule -> formule . IMPLICATION formule
+    (8) formule -> formule . EQUIVALENCE formule
+
+    RIGHTPAR        shift and go to state 27
+    DISJONCTION     shift and go to state 22
+    CONJONCTION     shift and go to state 25
+    IMPLICATION     shift and go to state 24
+    EQUIVALENCE     shift and go to state 23
+
+
+state 17
+
+    (14) formuleAtomique -> PREDICAT_1 LEFTPAR . terme RIGHTPAR
+    (17) terme -> . VARIABLE
+
+    VARIABLE        shift and go to state 3
+
+    terme                          shift and go to state 28
+
+state 18
+
+    (4) formule -> UNIVERSEL VARIABLE . formule
+    (3) formule -> . EXISTENTIEL VARIABLE formule
+    (4) formule -> . UNIVERSEL VARIABLE formule
+    (5) formule -> . formule DISJONCTION formule
+    (6) formule -> . formule CONJONCTION formule
+    (7) formule -> . formule IMPLICATION formule
+    (8) formule -> . formule EQUIVALENCE formule
+    (9) formule -> . NEGATION formule
+    (10) formule -> . LEFTPAR formule RIGHTPAR
+    (11) formule -> . formuleAtomique
+    (12) formuleAtomique -> . TRUE
+    (13) formuleAtomique -> . FALSE
+    (14) formuleAtomique -> . PREDICAT_1 LEFTPAR terme RIGHTPAR
+    (15) formuleAtomique -> . PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR
+    (16) formuleAtomique -> . terme EGAL terme
+    (17) terme -> . VARIABLE
+
+    EXISTENTIEL     shift and go to state 2
+    UNIVERSEL       shift and go to state 10
+    NEGATION        shift and go to state 12
+    LEFTPAR         shift and go to state 5
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 4
+    PREDICAT_1      shift and go to state 6
+    PREDICAT_2      shift and go to state 11
+    VARIABLE        shift and go to state 3
+
+    terme                          shift and go to state 13
+    formuleAtomique                shift and go to state 8
+    formule                        shift and go to state 29
+
+state 19
+
+    (15) formuleAtomique -> PREDICAT_2 LEFTPAR . terme VIRGULE terme RIGHTPAR
+    (17) terme -> . VARIABLE
+
+    VARIABLE        shift and go to state 3
+
+    terme                          shift and go to state 30
+
+state 20
+
+    (9) formule -> NEGATION formule .
+    (5) formule -> formule . DISJONCTION formule
+    (6) formule -> formule . CONJONCTION formule
+    (7) formule -> formule . IMPLICATION formule
+    (8) formule -> formule . EQUIVALENCE formule
+
+    DISJONCTION     reduce using rule 9 (formule -> NEGATION formule .)
+    CONJONCTION     reduce using rule 9 (formule -> NEGATION formule .)
+    IMPLICATION     reduce using rule 9 (formule -> NEGATION formule .)
+    EQUIVALENCE     reduce using rule 9 (formule -> NEGATION formule .)
+    $end            reduce using rule 9 (formule -> NEGATION formule .)
+    RIGHTPAR        reduce using rule 9 (formule -> NEGATION formule .)
+
+  ! DISJONCTION     [ shift and go to state 22 ]
+  ! CONJONCTION     [ shift and go to state 25 ]
+  ! IMPLICATION     [ shift and go to state 24 ]
+  ! EQUIVALENCE     [ shift and go to state 23 ]
+
+
+state 21
+
+    (16) formuleAtomique -> terme EGAL . terme
+    (17) terme -> . VARIABLE
+
+    VARIABLE        shift and go to state 3
+
+    terme                          shift and go to state 31
+
+state 22
+
+    (5) formule -> formule DISJONCTION . formule
+    (3) formule -> . EXISTENTIEL VARIABLE formule
+    (4) formule -> . UNIVERSEL VARIABLE formule
+    (5) formule -> . formule DISJONCTION formule
+    (6) formule -> . formule CONJONCTION formule
+    (7) formule -> . formule IMPLICATION formule
+    (8) formule -> . formule EQUIVALENCE formule
+    (9) formule -> . NEGATION formule
+    (10) formule -> . LEFTPAR formule RIGHTPAR
+    (11) formule -> . formuleAtomique
+    (12) formuleAtomique -> . TRUE
+    (13) formuleAtomique -> . FALSE
+    (14) formuleAtomique -> . PREDICAT_1 LEFTPAR terme RIGHTPAR
+    (15) formuleAtomique -> . PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR
+    (16) formuleAtomique -> . terme EGAL terme
+    (17) terme -> . VARIABLE
+
+    EXISTENTIEL     shift and go to state 2
+    UNIVERSEL       shift and go to state 10
+    NEGATION        shift and go to state 12
+    LEFTPAR         shift and go to state 5
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 4
+    PREDICAT_1      shift and go to state 6
+    PREDICAT_2      shift and go to state 11
+    VARIABLE        shift and go to state 3
+
+    terme                          shift and go to state 13
+    formuleAtomique                shift and go to state 8
+    formule                        shift and go to state 32
+
+state 23
+
+    (8) formule -> formule EQUIVALENCE . formule
+    (3) formule -> . EXISTENTIEL VARIABLE formule
+    (4) formule -> . UNIVERSEL VARIABLE formule
+    (5) formule -> . formule DISJONCTION formule
+    (6) formule -> . formule CONJONCTION formule
+    (7) formule -> . formule IMPLICATION formule
+    (8) formule -> . formule EQUIVALENCE formule
+    (9) formule -> . NEGATION formule
+    (10) formule -> . LEFTPAR formule RIGHTPAR
+    (11) formule -> . formuleAtomique
+    (12) formuleAtomique -> . TRUE
+    (13) formuleAtomique -> . FALSE
+    (14) formuleAtomique -> . PREDICAT_1 LEFTPAR terme RIGHTPAR
+    (15) formuleAtomique -> . PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR
+    (16) formuleAtomique -> . terme EGAL terme
+    (17) terme -> . VARIABLE
+
+    EXISTENTIEL     shift and go to state 2
+    UNIVERSEL       shift and go to state 10
+    NEGATION        shift and go to state 12
+    LEFTPAR         shift and go to state 5
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 4
+    PREDICAT_1      shift and go to state 6
+    PREDICAT_2      shift and go to state 11
+    VARIABLE        shift and go to state 3
+
+    terme                          shift and go to state 13
+    formuleAtomique                shift and go to state 8
+    formule                        shift and go to state 33
+
+state 24
+
+    (7) formule -> formule IMPLICATION . formule
+    (3) formule -> . EXISTENTIEL VARIABLE formule
+    (4) formule -> . UNIVERSEL VARIABLE formule
+    (5) formule -> . formule DISJONCTION formule
+    (6) formule -> . formule CONJONCTION formule
+    (7) formule -> . formule IMPLICATION formule
+    (8) formule -> . formule EQUIVALENCE formule
+    (9) formule -> . NEGATION formule
+    (10) formule -> . LEFTPAR formule RIGHTPAR
+    (11) formule -> . formuleAtomique
+    (12) formuleAtomique -> . TRUE
+    (13) formuleAtomique -> . FALSE
+    (14) formuleAtomique -> . PREDICAT_1 LEFTPAR terme RIGHTPAR
+    (15) formuleAtomique -> . PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR
+    (16) formuleAtomique -> . terme EGAL terme
+    (17) terme -> . VARIABLE
+
+    EXISTENTIEL     shift and go to state 2
+    UNIVERSEL       shift and go to state 10
+    NEGATION        shift and go to state 12
+    LEFTPAR         shift and go to state 5
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 4
+    PREDICAT_1      shift and go to state 6
+    PREDICAT_2      shift and go to state 11
+    VARIABLE        shift and go to state 3
+
+    terme                          shift and go to state 13
+    formuleAtomique                shift and go to state 8
+    formule                        shift and go to state 34
+
+state 25
+
+    (6) formule -> formule CONJONCTION . formule
+    (3) formule -> . EXISTENTIEL VARIABLE formule
+    (4) formule -> . UNIVERSEL VARIABLE formule
+    (5) formule -> . formule DISJONCTION formule
+    (6) formule -> . formule CONJONCTION formule
+    (7) formule -> . formule IMPLICATION formule
+    (8) formule -> . formule EQUIVALENCE formule
+    (9) formule -> . NEGATION formule
+    (10) formule -> . LEFTPAR formule RIGHTPAR
+    (11) formule -> . formuleAtomique
+    (12) formuleAtomique -> . TRUE
+    (13) formuleAtomique -> . FALSE
+    (14) formuleAtomique -> . PREDICAT_1 LEFTPAR terme RIGHTPAR
+    (15) formuleAtomique -> . PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR
+    (16) formuleAtomique -> . terme EGAL terme
+    (17) terme -> . VARIABLE
+
+    EXISTENTIEL     shift and go to state 2
+    UNIVERSEL       shift and go to state 10
+    NEGATION        shift and go to state 12
+    LEFTPAR         shift and go to state 5
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 4
+    PREDICAT_1      shift and go to state 6
+    PREDICAT_2      shift and go to state 11
+    VARIABLE        shift and go to state 3
+
+    terme                          shift and go to state 13
+    formuleAtomique                shift and go to state 8
+    formule                        shift and go to state 35
+
+state 26
+
+    (3) formule -> EXISTENTIEL VARIABLE formule .
+    (5) formule -> formule . DISJONCTION formule
+    (6) formule -> formule . CONJONCTION formule
+    (7) formule -> formule . IMPLICATION formule
+    (8) formule -> formule . EQUIVALENCE formule
+
+  ! shift/reduce conflict for DISJONCTION resolved as shift
+  ! shift/reduce conflict for CONJONCTION resolved as shift
+  ! shift/reduce conflict for IMPLICATION resolved as shift
+  ! shift/reduce conflict for EQUIVALENCE resolved as shift
+    $end            reduce using rule 3 (formule -> EXISTENTIEL VARIABLE formule .)
+    RIGHTPAR        reduce using rule 3 (formule -> EXISTENTIEL VARIABLE formule .)
+    DISJONCTION     shift and go to state 22
+    CONJONCTION     shift and go to state 25
+    IMPLICATION     shift and go to state 24
+    EQUIVALENCE     shift and go to state 23
+
+  ! DISJONCTION     [ reduce using rule 3 (formule -> EXISTENTIEL VARIABLE formule .) ]
+  ! CONJONCTION     [ reduce using rule 3 (formule -> EXISTENTIEL VARIABLE formule .) ]
+  ! IMPLICATION     [ reduce using rule 3 (formule -> EXISTENTIEL VARIABLE formule .) ]
+  ! EQUIVALENCE     [ reduce using rule 3 (formule -> EXISTENTIEL VARIABLE formule .) ]
+
+
+state 27
+
+    (10) formule -> LEFTPAR formule RIGHTPAR .
+
+    DISJONCTION     reduce using rule 10 (formule -> LEFTPAR formule RIGHTPAR .)
+    CONJONCTION     reduce using rule 10 (formule -> LEFTPAR formule RIGHTPAR .)
+    IMPLICATION     reduce using rule 10 (formule -> LEFTPAR formule RIGHTPAR .)
+    EQUIVALENCE     reduce using rule 10 (formule -> LEFTPAR formule RIGHTPAR .)
+    $end            reduce using rule 10 (formule -> LEFTPAR formule RIGHTPAR .)
+    RIGHTPAR        reduce using rule 10 (formule -> LEFTPAR formule RIGHTPAR .)
+
+
+state 28
+
+    (14) formuleAtomique -> PREDICAT_1 LEFTPAR terme . RIGHTPAR
+
+    RIGHTPAR        shift and go to state 36
+
+
+state 29
+
+    (4) formule -> UNIVERSEL VARIABLE formule .
+    (5) formule -> formule . DISJONCTION formule
+    (6) formule -> formule . CONJONCTION formule
+    (7) formule -> formule . IMPLICATION formule
+    (8) formule -> formule . EQUIVALENCE formule
+
+  ! shift/reduce conflict for DISJONCTION resolved as shift
+  ! shift/reduce conflict for CONJONCTION resolved as shift
+  ! shift/reduce conflict for IMPLICATION resolved as shift
+  ! shift/reduce conflict for EQUIVALENCE resolved as shift
+    $end            reduce using rule 4 (formule -> UNIVERSEL VARIABLE formule .)
+    RIGHTPAR        reduce using rule 4 (formule -> UNIVERSEL VARIABLE formule .)
+    DISJONCTION     shift and go to state 22
+    CONJONCTION     shift and go to state 25
+    IMPLICATION     shift and go to state 24
+    EQUIVALENCE     shift and go to state 23
+
+  ! DISJONCTION     [ reduce using rule 4 (formule -> UNIVERSEL VARIABLE formule .) ]
+  ! CONJONCTION     [ reduce using rule 4 (formule -> UNIVERSEL VARIABLE formule .) ]
+  ! IMPLICATION     [ reduce using rule 4 (formule -> UNIVERSEL VARIABLE formule .) ]
+  ! EQUIVALENCE     [ reduce using rule 4 (formule -> UNIVERSEL VARIABLE formule .) ]
+
+
+state 30
+
+    (15) formuleAtomique -> PREDICAT_2 LEFTPAR terme . VIRGULE terme RIGHTPAR
+
+    VIRGULE         shift and go to state 37
+
+
+state 31
+
+    (16) formuleAtomique -> terme EGAL terme .
+
+    DISJONCTION     reduce using rule 16 (formuleAtomique -> terme EGAL terme .)
+    CONJONCTION     reduce using rule 16 (formuleAtomique -> terme EGAL terme .)
+    IMPLICATION     reduce using rule 16 (formuleAtomique -> terme EGAL terme .)
+    EQUIVALENCE     reduce using rule 16 (formuleAtomique -> terme EGAL terme .)
+    $end            reduce using rule 16 (formuleAtomique -> terme EGAL terme .)
+    RIGHTPAR        reduce using rule 16 (formuleAtomique -> terme EGAL terme .)
+
+
+state 32
+
+    (5) formule -> formule DISJONCTION formule .
+    (5) formule -> formule . DISJONCTION formule
+    (6) formule -> formule . CONJONCTION formule
+    (7) formule -> formule . IMPLICATION formule
+    (8) formule -> formule . EQUIVALENCE formule
+
+    DISJONCTION     reduce using rule 5 (formule -> formule DISJONCTION formule .)
+    IMPLICATION     reduce using rule 5 (formule -> formule DISJONCTION formule .)
+    EQUIVALENCE     reduce using rule 5 (formule -> formule DISJONCTION formule .)
+    $end            reduce using rule 5 (formule -> formule DISJONCTION formule .)
+    RIGHTPAR        reduce using rule 5 (formule -> formule DISJONCTION formule .)
+    CONJONCTION     shift and go to state 25
+
+  ! CONJONCTION     [ reduce using rule 5 (formule -> formule DISJONCTION formule .) ]
+  ! DISJONCTION     [ shift and go to state 22 ]
+  ! IMPLICATION     [ shift and go to state 24 ]
+  ! EQUIVALENCE     [ shift and go to state 23 ]
+
+
+state 33
+
+    (8) formule -> formule EQUIVALENCE formule .
+    (5) formule -> formule . DISJONCTION formule
+    (6) formule -> formule . CONJONCTION formule
+    (7) formule -> formule . IMPLICATION formule
+    (8) formule -> formule . EQUIVALENCE formule
+
+    EQUIVALENCE     reduce using rule 8 (formule -> formule EQUIVALENCE formule .)
+    $end            reduce using rule 8 (formule -> formule EQUIVALENCE formule .)
+    RIGHTPAR        reduce using rule 8 (formule -> formule EQUIVALENCE formule .)
+    DISJONCTION     shift and go to state 22
+    CONJONCTION     shift and go to state 25
+    IMPLICATION     shift and go to state 24
+
+  ! DISJONCTION     [ reduce using rule 8 (formule -> formule EQUIVALENCE formule .) ]
+  ! CONJONCTION     [ reduce using rule 8 (formule -> formule EQUIVALENCE formule .) ]
+  ! IMPLICATION     [ reduce using rule 8 (formule -> formule EQUIVALENCE formule .) ]
+  ! EQUIVALENCE     [ shift and go to state 23 ]
+
+
+state 34
+
+    (7) formule -> formule IMPLICATION formule .
+    (5) formule -> formule . DISJONCTION formule
+    (6) formule -> formule . CONJONCTION formule
+    (7) formule -> formule . IMPLICATION formule
+    (8) formule -> formule . EQUIVALENCE formule
+
+    EQUIVALENCE     reduce using rule 7 (formule -> formule IMPLICATION formule .)
+    $end            reduce using rule 7 (formule -> formule IMPLICATION formule .)
+    RIGHTPAR        reduce using rule 7 (formule -> formule IMPLICATION formule .)
+    DISJONCTION     shift and go to state 22
+    CONJONCTION     shift and go to state 25
+    IMPLICATION     shift and go to state 24
+
+  ! DISJONCTION     [ reduce using rule 7 (formule -> formule IMPLICATION formule .) ]
+  ! CONJONCTION     [ reduce using rule 7 (formule -> formule IMPLICATION formule .) ]
+  ! IMPLICATION     [ reduce using rule 7 (formule -> formule IMPLICATION formule .) ]
+  ! EQUIVALENCE     [ shift and go to state 23 ]
+
+
+state 35
+
+    (6) formule -> formule CONJONCTION formule .
+    (5) formule -> formule . DISJONCTION formule
+    (6) formule -> formule . CONJONCTION formule
+    (7) formule -> formule . IMPLICATION formule
+    (8) formule -> formule . EQUIVALENCE formule
+
+    DISJONCTION     reduce using rule 6 (formule -> formule CONJONCTION formule .)
+    CONJONCTION     reduce using rule 6 (formule -> formule CONJONCTION formule .)
+    IMPLICATION     reduce using rule 6 (formule -> formule CONJONCTION formule .)
+    EQUIVALENCE     reduce using rule 6 (formule -> formule CONJONCTION formule .)
+    $end            reduce using rule 6 (formule -> formule CONJONCTION formule .)
+    RIGHTPAR        reduce using rule 6 (formule -> formule CONJONCTION formule .)
+
+  ! DISJONCTION     [ shift and go to state 22 ]
+  ! CONJONCTION     [ shift and go to state 25 ]
+  ! IMPLICATION     [ shift and go to state 24 ]
+  ! EQUIVALENCE     [ shift and go to state 23 ]
+
+
+state 36
+
+    (14) formuleAtomique -> PREDICAT_1 LEFTPAR terme RIGHTPAR .
+
+    DISJONCTION     reduce using rule 14 (formuleAtomique -> PREDICAT_1 LEFTPAR terme RIGHTPAR .)
+    CONJONCTION     reduce using rule 14 (formuleAtomique -> PREDICAT_1 LEFTPAR terme RIGHTPAR .)
+    IMPLICATION     reduce using rule 14 (formuleAtomique -> PREDICAT_1 LEFTPAR terme RIGHTPAR .)
+    EQUIVALENCE     reduce using rule 14 (formuleAtomique -> PREDICAT_1 LEFTPAR terme RIGHTPAR .)
+    $end            reduce using rule 14 (formuleAtomique -> PREDICAT_1 LEFTPAR terme RIGHTPAR .)
+    RIGHTPAR        reduce using rule 14 (formuleAtomique -> PREDICAT_1 LEFTPAR terme RIGHTPAR .)
+
+
+state 37
+
+    (15) formuleAtomique -> PREDICAT_2 LEFTPAR terme VIRGULE . terme RIGHTPAR
+    (17) terme -> . VARIABLE
+
+    VARIABLE        shift and go to state 3
+
+    terme                          shift and go to state 38
+
+state 38
+
+    (15) formuleAtomique -> PREDICAT_2 LEFTPAR terme VIRGULE terme . RIGHTPAR
+
+    RIGHTPAR        shift and go to state 39
+
+
+state 39
+
+    (15) formuleAtomique -> PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR .
+
+    DISJONCTION     reduce using rule 15 (formuleAtomique -> PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR .)
+    CONJONCTION     reduce using rule 15 (formuleAtomique -> PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR .)
+    IMPLICATION     reduce using rule 15 (formuleAtomique -> PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR .)
+    EQUIVALENCE     reduce using rule 15 (formuleAtomique -> PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR .)
+    $end            reduce using rule 15 (formuleAtomique -> PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR .)
+    RIGHTPAR        reduce using rule 15 (formuleAtomique -> PREDICAT_2 LEFTPAR terme VIRGULE terme RIGHTPAR .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for DISJONCTION in state 26 resolved as shift
+WARNING: shift/reduce conflict for CONJONCTION in state 26 resolved as shift
+WARNING: shift/reduce conflict for IMPLICATION in state 26 resolved as shift
+WARNING: shift/reduce conflict for EQUIVALENCE in state 26 resolved as shift
+WARNING: shift/reduce conflict for DISJONCTION in state 29 resolved as shift
+WARNING: shift/reduce conflict for CONJONCTION in state 29 resolved as shift
+WARNING: shift/reduce conflict for IMPLICATION in state 29 resolved as shift
+WARNING: shift/reduce conflict for EQUIVALENCE in state 29 resolved as shift

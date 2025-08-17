@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Prouveur</title>
+		
+		<link href="{{ url_for('static', filename='commun.css') }}" rel="stylesheet" type="text/css" />
+	</head>
+
+
+
+
+	<body>
+		
+		<form action="/supprime_regle_suite/{{   nomRegle   }}" method="post">
+			
+			<!--  ********************************************************** -->
+			<div class="menu" >
+				<h1>Prouveur</h1>
+				 
+			</div>
+	
+	
+			<!--  ********************************************************** -->
+			<div class="corps_page" >
+				
+				<h3>Saisir les données d'un nouvel exemple</h3>
+					<a href = "/saisie_complete" >Commencer la saisie</a>
+				
+				<br>&nbsp;
+				<br>&nbsp;
+				<br>&nbsp;
+				<h3>Utiliser un exemple enregistré dans un fichier</h3>
+					<a href = "/lire_fichier" >Lire un fichier</a>
+		        
+		        <br>&nbsp;
+		        <br>&nbsp;
+		        <br>&nbsp;
+				<h3>Utiliser l'exemple par défaut</h3>
+					<a href = "/exemple_defaut" >Go</a>
+		        
+        
+	</body>
+  
+</html>

@@ -1,0 +1,44 @@
+<!-- templates/predicat.html -->
+<div class="predicat">
+    <h2>{{ name }}</h2>
+    <hr>
+    <div class="section">
+        <h3>Est label de :</h3>
+        <ul>
+            {% for key, value in list_att.items() %}
+                {% if value %}
+                    {% if key =="else" or key =="'else'" %} 
+                        {% for el in liste_else_variables_predicate[name] %}
+                            {% set entered_loop = True %}
+                            {% if el != "else" and el !="'else'" and not est_bin[name] %}
+                                <li>{{ el }}</li>
+                            {% endif %}
+                        {% endfor %}
+                        <li>...</li>
+                        
+                    {% else %}
+                        <li>{% if assignations_dict[key] %}{{ assignations_dict[key] }}{% else %}{{ key }}{% endif %}</li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <h3>N'est pas label de :</h3>
+        <ul>
+            {% for key, value in list_att.items() %}
+                {% if not value %}
+                    {% if key =="else" %} 
+                        {% for el in liste_else_variables_predicate[name] %}
+                             {% if el != "else" and not est_bin[name] %}
+                                <li>{{ el }}</li>
+                            {% endif %}
+                        {% endfor %} 
+                        <li>...</li>
+                    {% else %}
+                        <li>{% if assignations_dict[key] %}{{ assignations_dict[key] }}{% else %}{{ key }}{% endif %}</li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>

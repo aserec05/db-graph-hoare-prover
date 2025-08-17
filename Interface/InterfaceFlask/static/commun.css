@@ -1,0 +1,166 @@
+.titre1 {
+	text-decoration: underline;
+	font-size: large;
+	font-weight: bold;
+	}
+
+
+p {
+border: 2px  solid blue ;
+}
+
+.textarea-container {
+	display: inline-flex;
+	color: red;
+    gap: 10px; 
+}
+
+textarea {
+    flex: 1; 
+}
+
+.cadre {
+	border: 2px  solid green ;
+	margin: 14px;
+	padding :18px;
+}
+
+
+#btnEffacerZoneSaisie:hover {
+  background-color: gold;
+}
+
+.rouge {
+   color: #921122;
+}
+
+.bouton:hover {
+  background-color: gold;
+}
+
+.bouton {
+	border: 2px  solid green ;
+	margin: 14px;
+	padding :12px;
+}
+
+
+.corps_page
+	{
+	position: absolute;
+	left: 310px;
+	top : 0px;
+	
+	margin : 0px;
+	width : 870px;
+	vertical-align : top;
+	padding : 30px;   /*marge intérieure*/
+	
+	
+	border-left : 2px solid rgb(158,136,98);
+		border-right : 2px solid rgb(158,136,98);
+		border-bottom : 2px solid rgb(158,136,98);
+		
+	background-color: #fffeff;
+	z-index :2 ;
+	
+	font-size: 16px; 
+	font-family: georgia;
+	}
+
+
+
+
+	
+.menu_classe   /* repris dans 2nde feuille de style */
+	{
+	position: fixed;
+	left: 80px;
+	top: 30px;
+	
+	width : 200px;
+	vertical-align : top;
+	
+	padding : 20px;   /*marge intérieure*/
+	
+	border : 0px solid rgb(158,136,98);
+	
+	z-index :1 ;
+	
+	font-size: 16px; 
+	font-family: georgia;
+	}
+
+
+
+
+
+
+
+
+.menu
+{
+position: fixed;
+left: 20px;
+top: 30px;
+	
+width : 240px;
+vertical-align : top;
+	
+	 
+	
+	border : 0px solid rgb(158,136,98);
+	
+	z-index :1 ;
+	
+	font-size: 16px; 
+	font-family: georgia;
+}	
+/* styles.css */
+.predicat {
+    display: inline-block; /* Afficher en ligne */
+    background-color: #f9f9f9; /* Couleur de fond plus claire */
+    border: 1px solid #ddd; /* Bordure plus fine */
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px; /* Marge autour des prédicats */
+    max-width: 300px; /* Largeur maximale */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre */
+}
+
+.predicat h2 {
+    font-size: 24px; /* Taille de police du titre */
+    color: #333; /* Couleur de texte plus foncée */
+    margin-bottom: 10px;
+}
+
+.predicat hr {
+    border: 0;
+    border-top: 1px solid #ddd; /* Ligne horizontale plus légère */
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.predicat .section {
+    margin-top: 20px;
+}
+
+.predicat h3 {
+    font-size: 18px; /* Taille de police des sous-titres */
+    color: #555; /* Couleur de texte plus foncée */
+    margin-bottom: 10px;
+}
+
+.predicat ul {
+    padding-left: 20px; /* Retrait des puces */
+}
+
+.predicat li {
+    color: #666; /* Couleur de texte plus foncée pour les éléments de liste */
+    margin-bottom: 5px;
+}
+
+.spaceBetween {
+	display: flex;
+	
+}

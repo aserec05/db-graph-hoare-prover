@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Lecture fichier</title>
+		
+		<link href="{{ url_for('static', filename='commun.css') }}" rel="stylesheet" type="text/css" />
+	</head>
+
+
+
+
+	<body>
+		
+		
+	<!--  ********************************************************** -->
+		<div class="menu" >
+			<h1>Prouveur</h1>
+			 
+			<ul>
+				 
+				
+				<li><a href = "/" >Annuler</a> et retour sur page accueil </li>
+			</ul>
+		</div>
+	
+	
+	<!--  ********************************************************** -->
+		<div class="corps_page" >
+			
+			<h1>Lecture d'un fichier</h1>
+		 
+	  
+			Choisir un fichier
+			
+			{% for elt in lesFichiers %}
+			
+			<form action="/lire_fichier_suite" method="post">
+			
+						<input type="hidden"  value = {{ elt}}  name = "FileName"  />
+			
+			<br><input type="submit" value = {{ elt}} />
+			
+			</form>
+			{% endfor %}
+		
+		
+		 
+    
+	</body>
+  
+</html>
+
+
+
+
+
+

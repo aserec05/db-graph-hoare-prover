@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Prouveur</title>
+		
+		<link href="{{ url_for('static', filename='commun.css') }}" rel="stylesheet" type="text/css" />
+	</head>
+
+
+
+
+	<body>
+		
+		
+	<!--  ********************************************************** -->
+		<div class="menu" >
+			<h1>Prouveur</h1>
+			 
+			<ul>
+				<li><a href = "/calcul_correction" >Calcul</a> de la correction</li>
+				<br>&nbsp;
+				
+				<li><a href = "/enregistrer_fichier" >Enregistrer</a> les données dans un fichier texte</li>
+				<br>&nbsp;
+				
+				<li><a href = "/" >Accueil</a> (et quitter sans enregistrer)</li>
+			</ul>
+		</div>
+	
+	
+	<!--  ********************************************************** -->
+		<div class="corps_page" >
+			
+				<!-- vocabulaire -->
+				<form action="/saisie_vocabulaire" >
+					<span class = "titre1">Vocabulaire</span>
+					&nbsp; &nbsp; &nbsp; &nbsp; 
+					<input type="submit" value="Saisir / Modifier" />
+					
+					<div class = "cadre">
+						<h3>Predicats unaires (Concepts) </h3>
+						{% for elt in datasNoyau.getVocabulaire().getListePredicats_1() %}
+							  {{ elt }} &nbsp; &nbsp; &nbsp;	
+						{% endfor %}
+						
+						
+						<h3>Predicats binaires (Roles) </h3>
+						{% for elt in datasNoyau.getVocabulaire().getListePredicats_2() %}
+							{% if elt!="_____" %}
+							{{ elt }}   &nbsp; &nbsp; &nbsp;
+							{% endif %}			
+						{% endfor %}
+					</div>
+					
+				</form>
+			
+			
+			<!-- formule pre -->
+			<form action="/saisie_formule/formulePre" method="post">
+				<span class = "titre1">Pre</span>
+				&nbsp; &nbsp; &nbsp; &nbsp; 
+				<input type = "hidden"  name = "formule"  value = {{ datasNoyau.getFormulePre() }} >
+				<input type="submit" value="Saisir / Modifier" />
+				
+				<div class = "cadre">
+					{% if datasNoyau.formulePre %}
+						 {{ datasNoyau.formulePre }}  
+					{% endif %}
+				</div>
+			</form>
+		
+		  
+			<!-- formule post -->
+			<form action="/saisie_formule/formulePost" method="post">
+				<span class = "titre1">Post</span>
+				&nbsp; &nbsp; &nbsp; &nbsp; 
+				<input type = "hidden"  name = "formule"  value = {{ datasNoyau.getFormulePost() }} >
+				
+				<input type="submit" value="Saisir / Modifier" />
+				
+				<div class = "cadre">
+					{% if datasNoyau.formulePost %}
+						 {{ datasNoyau.formulePost }}  
+					{% endif %}
+				</div>
+			</form>
+		
+		
+			<!-- Regles -->
+			{% set nombreRegles =  datasNoyau.getLesRegles().getNombreRegles() %}
+			
+			<form action="/saisie_regle" method="post">
+			<span class = "titre1">Systeme de réécriture : {{ nombreRegles }} règles </span>
+			&nbsp; &nbsp; &nbsp; &nbsp; 
+			<input type="submit" value="Ajouter une règle" />
+			</form>
+			
+			<div class = "cadre">
+				<ul>
+				{% for nomRegle in   datasNoyau.getLesRegles()   %}
+					{% set regle = datasNoyau.getLesRegles().getRegle(nomRegle) %}
+					<div class="spaceBetween">
+						<form action="/supprime_regle/{{   nomRegle   }}" method="post">
+							<li>  Regle [{{   nomRegle   }}]
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="submit" value="Supprimer" />
+						</form>
+						<form action="/modifier_regle/{{   nomRegle   }}" method="post">
+								<input type="submit" value="Modifier" />
+						</form>
+					</div>
+					<ul>
+						<!-- les noeuds -->
+						{% set nombre = regle.getNombreNoeuds() %}
+						{% if nombre %}
+							<li>Les noeuds : {{ nombre }}
+							<ul>
+							{% for noeud in regle.iterateurNoeuds()  %}
+								<li>  {{   noeud   }} 
+							{% endfor %}
+							</ul>
+						{% else %}
+							<li>Aucun noeud
+						 {% endif %}
+					
+						<!-- les arcs -->
+						{% set nombre = regle.getNombreArcs() %}
+						{% if nombre %}
+							<li>Les arcs: {{ nombre }}
+							<ul>
+							{% for arc in  regle.iterateurArcs()  %}
+								<li>  {{   arc   }} 
+							{% endfor %}
+							</ul>
+						{% else %}
+							<li>Aucun arc
+						 {% endif %}
+						
+						<!-- les actions -->
+						{% set nombre = regle.getNombreActions() %}
+						{% if nombre %}
+							<li>Les actions: {{ nombre }}
+							<ul>
+							{% for action in  regle.iterateurActions()  %}
+								<li>  {{   action   }} 
+							{% endfor %}
+							</ul>
+						{% else %}
+							<li>Aucune action
+						{% endif %}
+					
+					
+					<!--
+					<form action="/modifie_regle/{{   nomRegle   }}" method="post">
+					<input type="submit" value="Modifier" />
+					</form>
+					-->
+					<br>&nbsp;
+					</ul>
+					
+				{% endfor %}
+				</ul>
+			</div>
+		
+		
+		
+			<!-- Strategie -->
+			<form action="/saisie_strategie" method="post">
+			<span class = "titre1">Strategie</span>
+			&nbsp; &nbsp; &nbsp; &nbsp; 
+			<input type="submit" value="Saisir / Modifier la strategie" />
+			</form>
+			
+			 
+			<div class = "cadre">
+				<ul>
+					{% set chaine =  datasNoyau.getStrategie().getFormuleStrategie() %}
+						{% if chaine %}
+							<li> {{ chaine }}
+						{% else %}
+							<li>à saisir</li>
+						{% endif %}
+						
+					{% set lesInvariants = datasNoyau.getStrategie().getLesInvariants() %}
+						{% if lesInvariants %}
+							<br>&nbsp;
+							<li>Les invariants</li>
+							<ul>
+								{% for invariant in   lesInvariants  %}
+								<li>  {{   invariant   }} 
+								{% endfor %}
+							</ul>
+						{% endif %}
+				</ul>
+			</div>
+	
+	
+	</div> 
+    
+	</body>
+  
+</html>

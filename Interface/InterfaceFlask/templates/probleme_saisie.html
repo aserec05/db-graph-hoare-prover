@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Probleme de saisie</title>
+		<link href="{{ url_for('static', filename='commun.css') }}" rel="stylesheet" type="text/css" />
+	
+		
+	</head>
+
+
+
+
+	<body>
+	
+		{% if variable == "invariant" %}
+			{% set adresse =  "/traitement_saisie_strategie"  %}
+		{% elif variable == "formulePre" %}
+			 {% set adresse = "/saisie_formule/formulePre" %}
+		{% elif variable == "formulePost" %}
+			 {% set adresse = "/saisie_formule/formulePost" %}
+		{% endif  %}
+		<form action={{adresse}}    method="post">
+		
+		
+		<!--  ********************************************************** -->
+		<div class="menu" >
+			<h1>Prouveur</h1>
+			 
+			<br>
+
+				<input type = "hidden"  name = "formule"  value = {{formuleBrute}} >
+				<input type="submit" value="Reprendre la saisie" />
+				<br>&nbsp;
+				<br>&nbsp;
+				<br>&nbsp;
+				
+				
+				<li><a href = "/central" >Annuler</a> et retourner vers les données</li>
+				<br>&nbsp;
+				<br>&nbsp;
+				<br>&nbsp;
+				
+				<li><a href = "/" >Annuler</a> et retour à la racine</li>
+				<br>&nbsp;
+		</div>
+	
+	
+		<!--  ********************************************************** -->
+		<div class="corps_page" >
+	 
+			<h1>Probleme de saisie : la formule n'a pas été validée </h1>
+			
+			
+			<br>&nbsp;
+			<br>&nbsp;
+			<span class = 'rouge'>{{ formuleBrute }}</span>
+			<br>&nbsp;
+			<br>
+			 
+		</div>
+		
+		
+		</form>
+ 
+			
+    
+  </body>
+  
+</html>

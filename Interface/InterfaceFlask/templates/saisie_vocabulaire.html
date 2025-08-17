@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Saisie du vocabulaire</title>
+		
+		<link href="{{ url_for('static', filename='commun.css') }}" rel="stylesheet" type="text/css" />
+	</head>
+
+
+
+
+	<body>
+		
+		<form action="/traitement_saisie_vocabulaire"   method="post">
+			
+			<!--  ********************************************************** -->
+			<div class="menu" >
+				<h1>Prouveur</h1>
+				 
+				<ul>
+					<li><input type="submit" value="Envoyer" />
+					<br>Valider la saisie
+					<br>&nbsp;
+					<br>&nbsp;
+					
+					<li><a href = "/central" >Annuler la saisie</a>
+					<br>Retour vers les données</li>
+					<br>&nbsp;
+				</ul>
+			</div>
+	
+	
+			<!--  ********************************************************** -->
+			<div class="corps_page" >
+				<h1>Saisie du vocabulaire</h1>
+			
+					<h2>Les concepts : prédicats unaires</h2>
+					Un prédicat par ligne ...
+					 
+					<br><textarea cols=40  rows = 5 name = "lesConcepts" >{{concepts}}</textarea>  
+					
+					
+					
+					
+					<h2>Les concepts : prédicats binaires</h2>
+					Un prédicat par ligne ...
+					 
+					<br><textarea cols=40  rows = 5 name = "lesRoles">{{roles}}</textarea>  
+					
+					 
+					 
+			
+		</form>
+	      
+	</body>
+  
+</html>
